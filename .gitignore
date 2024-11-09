@@ -1,0 +1,52 @@
+# Ignore large data files
+*.csv
+*.xlsx
+*.xls
+*.ods
+*.tsv
+*.json
+*.parquet
+*.h5
+
+# Ignore image and video files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.webp
+*.mp4
+*.mkv
+*.avi
+*.mov
+*.wmv
+*.flv
+*.mpg
+*.mpeg
+
+# Ignore audio files
+*.mp3
+*.wav
+*.aac
+*.flac
+*.ogg
+
+# Ignore large document files
+*.pdf
+*.docx
+*.pptx
+*.odt
+
+# Ignore backup and temporary files
+*~
+*.bak
+*.swp
+*.tmp
+*.log
+# Ignore Python compiled files
+*.pyc
+*.pyc
+*.pyo
+*.pyd
