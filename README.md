@@ -1,161 +1,70 @@
-# Interim Report: Time Series Forecasting for Portfolio Management Optimization
+# Portfolio Management Optimization
 
-## Introduction
+This project aims to build an optimized portfolio management system using various financial analysis techniques, including data fetching, preprocessing, exploratory data analysis (EDA), forecasting, and portfolio optimization. The goal is to assist in making investment decisions by optimizing asset allocation using modern financial algorithms.
 
-Guide Me in Finance (GMF) Investments is dedicated to enhancing its portfolio management strategies by integrating advanced time series forecasting models. The goal is to predict market trends, optimize asset allocation, and improve portfolio performance for clients. This report covers the progress made so far in applying time series forecasting to key financial assets: **Tesla (TSLA)**, **Vanguard Total Bond Market ETF (BND)**, and **S&P 500 ETF (SPY)**.
+## Table of Contents
 
-## Business Objective
+- [Installation](#installation)
+- [Usage](#usage)
+- [Directory Structure](#directory-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-The core objective is to leverage time series forecasting techniques to predict market trends and optimize asset allocation for GMF's clients. The goals are:
+## Installation
 
-- **Predict Future Market Trends**: Apply forecasting models to predict the performance of key financial assets.
-- **Optimize Asset Allocation**: Generate recommendations for portfolio rebalancing based on forecasted market trends.
-- **Offer Actionable Insights**: Assist GMF in making data-driven decisions that maximize returns and minimize risks.
+To get started with this project, follow these steps:
 
-## Key Tasks
+1. Clone this repository to your local machine:
 
-1. **Data Extraction and Preprocessing**: Gather historical data from financial assets.
-2. **Model Development**: Implement time series models to forecast asset price trends.
-3. **Portfolio Optimization**: Use forecasted trends to optimize portfolio allocation.
+    ```bash
+    git clone https://github.com/HaYyu-Ra/portfolio-management-optimization.git
+    ```
 
-## Data Overview
+2. Navigate to the project directory:
 
-### Assets Analyzed
+    ```bash
+    cd portfolio-management-optimization
+    ```
 
-- **Tesla (TSLA)**: High-growth, high-risk stock in the automotive sector.
-- **Vanguard Total Bond Market ETF (BND)**: Low-risk bond ETF for stability and predictable returns.
-- **S&P 500 ETF (SPY)**: Balanced exposure to the broader stock market with moderate risk.
+3. Create and activate a virtual environment:
 
-### Data Source
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
 
-- **Yahoo Finance** via the YFinance API, spanning from January 1, 2015, to October 31, 2024.
+4. Install the necessary dependencies from `requirements.txt`:
 
-### Preprocessing Steps
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-- **Missing Data Handling**: Forward-fill used to fill missing values.
-- **Standardization**: Ensured numerical consistency for comparative analysis.
+## Usage
 
-### Processed Data
+To start using the project:
 
-- **TSLA Data**: Saved as `TSLA_processed.csv`
-- **BND Data**: Saved as `BND_processed.csv`
-- **SPY Data**: Saved as `SPY_processed.csv`
+1. **Data Fetching**: The `scripts/data_fetch.py` file allows you to fetch the latest financial data for portfolio optimization.
+2. **EDA**: Use the Jupyter notebooks in the `notebooks/` directory to perform exploratory data analysis (EDA) on the financial data.
+3. **Forecasting**: Run the forecasting models from the `scripts/forecasting.py` to predict the future trends of the assets.
+4. **Optimization**: The portfolio optimization module in `scripts/portfolio.py` optimizes the asset allocation based on the forecasted data.
 
-## Exploratory Data Analysis (EDA) Results
+Run the scripts or notebooks as needed to perform the desired analysis or optimizations.
 
-### Key insights from the EDA of the three assets
+## Directory Structure
 
-- **Time Series Visualization (Closing Price Over Time)**:
-  - **TSLA**: Exhibits high volatility with large price swings.
-  - **BND**: Stable performance with minor fluctuations.
-  - **SPY**: Moderate trends aligned with broader market movements.
+The project follows the structure below:
+portfolio-management-optimization/ ├── notebooks/ # Jupyter notebooks for EDA and forecasting ├── scripts/ # Python scripts for data fetching, preprocessing, and optimization ├── tests/ # Unit tests ├── .github/ # GitHub Actions workflows ├── .gitignore # Git ignore rules ├── requirements.txt # Project dependencies ├── README.md # Project documentation
 
-- **Volatility (Daily Percentage Change)**:
-  - **TSLA**: High volatility with frequent large changes.
-  - **BND**: Low volatility, reflecting stability.
-  - **SPY**: Moderate fluctuations in line with the overall market.
+## Contributing
 
-- **Rolling Mean & Standard Deviation (30-day window)**:
-  - **TSLA**: Significant fluctuations in rolling mean.
-  - **BND**: Consistent and stable rolling mean.
-  - **SPY**: Moderate changes, consistent with market trends.
+If you would like to contribute to this project, please follow these steps:
 
-- **Outlier Detection**:
-  - **TSLA**: Identified several outliers, reflecting high volatility.
-  - **BND**: Few outliers due to its stability.
-  - **SPY**: A small number of outliers, often reflecting market events.
+1. Fork the repository: [Portfolio Management Optimization](https://github.com/HaYyu-Ra/portfolio-management-optimization).
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Create a pull request.
 
-## Forecasting Results (SARIMA Model)
+## License
 
-The **SARIMA (Seasonal AutoRegressive Integrated Moving Average)** model was applied to forecast future price trends for the three assets.
-
-### Forecast for TSLA (Next 30 Days)
-
-**Expected Price Fluctuations**: TSLA is expected to continue experiencing volatility with fluctuations.
-
-**Sample Forecast Values**:
-
-- **2024-10-31**: -0.000973
-- **2024-11-01**: 0.000360
-- **2024-11-02**: -0.006672
-- **2024-11-03**: 0.000270
-- **2024-11-04**: 0.001477
-- **2024-11-05**: 0.000137
-- **2024-11-06**: 0.000109
-- **2024-11-07**: -0.000613
-- **2024-11-08**: -0.001851
-- **2024-11-09**: 0.000962
-
-### Forecast for BND (Next 30 Days)
-
-**Expected Price Fluctuations**: BND is forecasted to exhibit stable returns with minor fluctuations.
-
-**Sample Forecast Values**:
-
-- **2024-10-31**: -0.001900
-- **2024-11-01**: -0.002357
-- **2024-11-02**: 0.001178
-- **2024-11-03**: -0.005295
-- **2024-11-04**: 0.003379
-- **2024-11-05**: 0.002065
-- **2024-11-06**: -0.004518
-- **2024-11-07**: -0.002566
-- **2024-11-08**: -0.001279
-- **2024-11-09**: 0.002741
-
-### Forecast for SPY (Next 30 Days)
-
-**Expected Price Fluctuations**: SPY is expected to show moderate fluctuations in line with broader market movements.
-
-**Sample Forecast Values**:
-
-- **2024-10-31**: 0.001144
-- **2024-11-01**: 0.001038
-- **2024-11-02**: -0.000556
-- **2024-11-03**: -0.002050
-- **2024-11-04**: 0.001103
-- **2024-11-05**: -0.002176
-- **2024-11-06**: 0.000897
-- **2024-11-07**: -0.000687
-- **2024-11-08**: -0.001014
-- **2024-11-09**: 0.001661
-
-## Portfolio Optimization and Allocation
-
-Using daily returns for each asset, portfolio optimization was performed based on the **Sharpe ratio** and **Value at Risk (VaR)**.
-
-### Optimal Portfolio Weights
-
-- **TSLA**: 34.1%
-- **BND**: 0.0%
-- **SPY**: 65.9%
-
-### Sharpe Ratios
-
-- **TSLA Sharpe Ratio**: -0.14
-- **BND Sharpe Ratio**: N/A (due to NaN values in daily returns)
-- **SPY Sharpe Ratio**: N/A (due to NaN values in daily returns)
-
-### Value at Risk (VaR)
-
-- **TSLA VaR**: -0.09
-
-## GitHub Link
-
-[GitHub Repository: Portfolio Management Optimization](https://github.com/HaYyu-Ra/portfolio-management-optimization)
-
-## Conclusion
-
-The time series forecasts for **TSLA**, **BND**, and **SPY** provide valuable insights into the potential future movements of these assets. The volatility in **TSLA** suggests it remains a high-risk, high-reward asset, while **BND** shows stable returns with low risk. **SPY** offers moderate exposure to the overall market.
-
-### Portfolio Optimization Recommendations
-
-- GMF should consider allocating **34.1%** of the portfolio to **TSLA**, **0%** to **BND** (given its low risk-adjusted return), and **65.9%** to **SPY**.
-
-## Next Steps
-
-1. **Refine Forecasting Models**: Incorporate updated data for more accurate predictions.
-2. **Incorporate Additional Risk Management Strategies**: Evaluate and integrate other metrics such as drawdown and maximum loss to better manage portfolio risk.
-3. **Recalculate Portfolio Allocations**: Regularly update portfolio recommendations based on new market data and changing forecast trends.
-
-This interim report reflects a comprehensive analysis of historical trends and forecasting models, helping GMF optimize its asset allocation strategies based on current market trends.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
